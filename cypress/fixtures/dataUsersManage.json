@@ -1,0 +1,20 @@
+{
+  "userExist": {
+    "name": "Valentina Sofía Rincón Lozano",
+    "documentType": "CC",
+    "document": "1066331789",
+    "email":"valentina.srincon@pymecalzado.com",
+    "phone": "3168899001",
+    "role": "Operario",
+    "productionLine": "Corte"
+  },
+  "newUser": {
+    "name": "",
+    "documentType": "",
+    "document": "",
+    "email":"",
+    "phone": "",
+    "role": "",
+    "productionLine": ""
+  }
+}

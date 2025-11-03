@@ -1,0 +1,37 @@
+{
+  "userManager": {
+    "document": "1024575027",
+    "password": "123456789",
+    "name": "Clark Kent",
+    "role": "Gerente"
+  },
+  "userAdmin": {
+    "document": "1013672303",
+    "password": "FooBar1!",
+    "name": "Miguel Herrera",
+    "role": "Administrador"
+  },
+  "userOperator": {
+    "document": "1024575050",
+    "password": "fy474894hf.X",
+    "name": "Victor Lautano",
+    "role": "Operario",
+    "productionLine": "Corte"
+  },
+  "userDisabled": {
+    "document": "1024575030",
+    "password": "123456789"
+  },
+  "usuarioInvalido": {
+    "document": "567133123",
+    "password": "123456789"
+  },
+  "passwordIncorrecto": {
+    "document": "1024575027",
+    "password": "wrongpass"
+  },
+  "dataIncorrecta": {
+    "document": "gerente@yopmail.com",
+    "password": "123456789"
+  }
+}
