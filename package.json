@@ -1,0 +1,27 @@
+{
+  "name": "pymescalzado-automation-test",
+  "version": "1.0.0",
+  "description": "Este repositorio contiene la automatización de pruebas para el proyecto de grado pymes de calzado",
+  "main": "index.js",
+  "author": "Miguel Herrera y Edwin Paez",
+  "license": "ISC",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Esp-Ing-Software-Tesis/PymesCalzado-Automation-Test.git"
+  },
+  "keywords": [
+    "qa",
+    "e2e"
+  ],
+  "bugs": {
+    "url": "https://github.com/Esp-Ing-Software-Tesis/PymesCalzado-Automation-Test/issues"
+  },
+  "homepage": "https://github.com/Esp-Ing-Software-Tesis/PymesCalzado-Automation-Test#readme",
+  "devDependencies": {
+    "cypress": "^13.6.2",
+    "cypress-grep": "^3.0.4"
+  }
+}
