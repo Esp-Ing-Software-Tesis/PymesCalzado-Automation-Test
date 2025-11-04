@@ -2,7 +2,7 @@ name: Run Cypress tests on QA
 
 on:
   repository_dispatch:
-    types: [run-qa-tests] # Se dispara desde otro repo
+    types: [run-qa-tests]
 
 jobs:
   cypress-tests:
@@ -24,4 +24,3 @@ jobs:
         uses: cypress-io/github-action@v4
         with:
           browser: chrome
-          headless: true
