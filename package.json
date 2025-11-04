@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/Esp-Ing-Software-Tesis/PymesCalzado-Automation-Test#readme",
   "devDependencies": {
-    "cypress": "^13.6.2",
-    "cypress-grep": "^3.0.4"
+    "@cypress/grep": "^5.0.0",
+    "cypress": "^13.6.2"
   }
 }
