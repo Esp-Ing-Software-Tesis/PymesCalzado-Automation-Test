@@ -123,7 +123,7 @@ describe("Pruebas login - Pymes de Calzado", function () {
 
     cy.get(loginPage.alertError, { timeout: 10000 }).should(
       "contain.text",
-      "Número de documento o contraseña incorrectos"
+      "Ocurrió un error al iniciar sesión."
     );
   });
 });
