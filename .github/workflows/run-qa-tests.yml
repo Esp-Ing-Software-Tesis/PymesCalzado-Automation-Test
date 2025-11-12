@@ -20,9 +20,18 @@ on:
 jobs:
   cypress-tests:
     runs-on: ubuntu-latest
+
     strategy:
       matrix:
-        browser: ${{ fromJson(github.event.inputs.browser == 'all' || github.event_name == 'repository_dispatch' ? '["chrome","edge","firefox"]' : format('["{0}"]', github.event.inputs.browser)) }}
+        include: ${{ fromJson(
+          github.event_name == 'repository_dispatch' || github.event.inputs.browser == 'all'
+          && '[
+            {"browser": "chrome"},
+            {"browser": "edge"},
+            {"browser": "firefox"}
+          ]'
+          || format('[{{"browser": "{0}"}}]', github.event.inputs.browser)
+        ) }}
 
     steps:
       - name: Checkout repository
