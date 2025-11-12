@@ -39,10 +39,16 @@ jobs:
       - name: Install dependencies
         run: npm ci --legacy-peer-deps
 
+      - name: Install Firefox dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y firefox-esr libgtk-3-0 libdbus-glib-1-2 libxt6
+
       - name: Run Cypress tests on ${{ matrix.browser }}
         uses: cypress-io/github-action@v4
         with:
           browser: ${{ matrix.browser }}
+          headed: true
 
   # 🔹 Caso 2: ejecución manual con un solo navegador
   single-browser:
@@ -61,7 +67,14 @@ jobs:
       - name: Install dependencies
         run: npm ci --legacy-peer-deps
 
+      - name: Install Firefox dependencies (if needed)
+        if: ${{ github.event.inputs.browser == 'firefox' }}
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y firefox-esr libgtk-3-0 libdbus-glib-1-2 libxt6
+
       - name: Run Cypress tests on ${{ github.event.inputs.browser }}
         uses: cypress-io/github-action@v4
         with:
           browser: ${{ github.event.inputs.browser }}
+          headed: true
