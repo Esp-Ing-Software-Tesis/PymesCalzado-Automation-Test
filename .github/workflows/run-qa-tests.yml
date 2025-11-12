@@ -4,13 +4,28 @@ on:
   repository_dispatch:
     types: [run-qa-tests]
 
+  workflow_dispatch:
+    inputs:
+      browser:
+        description: "Selecciona el navegador para ejecutar las pruebas"
+        required: false
+        default: "chrome"
+        type: choice
+        options:
+          - chrome
+          - edge
+          - firefox
+          - all
+
 jobs:
   cypress-tests:
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        browser: [chrome, edge, firefox]
+        browser: ${{ fromJson('["chrome","edge","firefox"]') }}
+
+    if: ${{ github.event_name == 'repository_dispatch' || github.event.inputs.browser == 'all' || contains(matrix.browser, github.event.inputs.browser) }}
 
     steps:
       - name: Checkout repository
