@@ -18,20 +18,14 @@ on:
           - all
 
 jobs:
-  cypress-tests:
+  # 🔹 Caso 1: ejecución automática o manual con "all"
+  all-browsers:
+    if: ${{ github.event_name == 'repository_dispatch' || github.event.inputs.browser == 'all' }}
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        include: ${{ fromJson(
-          github.event_name == 'repository_dispatch' || github.event.inputs.browser == 'all'
-          && '[
-            {"browser": "chrome"},
-            {"browser": "edge"},
-            {"browser": "firefox"}
-          ]'
-          || format('[{{"browser": "{0}"}}]', github.event.inputs.browser)
-        ) }}
+        browser: [chrome, edge, firefox]
 
     steps:
       - name: Checkout repository
@@ -49,3 +43,25 @@ jobs:
         uses: cypress-io/github-action@v4
         with:
           browser: ${{ matrix.browser }}
+
+  # 🔹 Caso 2: ejecución manual con un solo navegador
+  single-browser:
+    if: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.browser != 'all' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Run Cypress tests on ${{ github.event.inputs.browser }}
+        uses: cypress-io/github-action@v4
+        with:
+          browser: ${{ github.event.inputs.browser }}
